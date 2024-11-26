@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 public abstract class AlunoInatel {
     private String nome;
     private String cpf;
@@ -15,5 +18,12 @@ public abstract class AlunoInatel {
         this.curso = curso;
     }
 
-    public abstract void infoAlunoInatel();
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String infoAlunoInatel() {
+        return "Nome: " + nome + ", CPF: " + cpf + ", Matrícula: " + matricula +
+                ", Email: " + email + ", Data de Nascimento: " + dataNascimento + ", Curso: " + curso;
+    }
 }
