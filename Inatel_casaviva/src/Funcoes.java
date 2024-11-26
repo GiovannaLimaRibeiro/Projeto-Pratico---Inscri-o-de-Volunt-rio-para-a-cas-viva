@@ -1,6 +1,6 @@
 public interface Funcoes{
-    void ministrarAulas();
+    public void ministrarAulas();
 
-    void atividadesLixoEletronico();
+    public void atividadesLixoEletronico();
 
 }
