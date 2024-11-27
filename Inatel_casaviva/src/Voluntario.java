@@ -44,19 +44,17 @@ public class Voluntario extends AlunoInatel implements Funcoes {
         funcoes.add(funcao);
     }
 
-    public String setEndereco(String endereco) {
-        return this.endereco;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-
-    public int setNumDeHorasRegistradas(int i) {
-        return numDeHorasRegistradas;
+    public void setNumDeHorasRegistradas(int NumDeHorasRegistradas) {
+        this.numDeHorasRegistradas=numDeHorasRegistradas;
     }
 
     public List<String> getMaterias() {
         return materias;
     }
-
 
     @Override
     public void ministrarAulas() {
