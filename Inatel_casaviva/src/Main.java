@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
-    private static final String FILE_NAME = "voluntarios.txt";
+    private static final String FILE_NAME = "C:\\Users\\natan\\Documents\\GitHub\\Projeto-Pratico-Inscricao-de-voluntarios-para-a-casa-viva\\Inatel_casaviva\\src\\voluntarios.txt";
     private static final ArrayList<Voluntario> voluntarios = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -213,6 +213,32 @@ public class Main {
 
     //Java IO: Persistência dos dados
     private static void salvarDados() {
+        FileOutputStream fluxoSaida = null;
+        OutputStreamWriter geradorFluxoSaida = null;
+        BufferedWriter bufferSaida = null;
+        try {
+            //Inicializando os objetos
+            fluxoSaida = new FileOutputStream(FILE_NAME, true); // true para não sobrescrever o arquivo
+            geradorFluxoSaida = new OutputStreamWriter(fluxoSaida);
+            bufferSaida = new BufferedWriter(geradorFluxoSaida);
+            // Escrita no arquivo
+            for (Voluntario voluntario : voluntarios) {
+                bufferSaida.write(voluntario.infoVoluntarios());
+                bufferSaida.newLine();
+            }
+
+        }catch (Exception e){
+            System.err.printf(String.valueOf(e));
+        } finally {
+            try {
+                // Fechando o buffer
+                assert bufferSaida != null;
+                bufferSaida.close();
+            } catch (IOException e) {
+                System.err.printf(String.valueOf(e));
+            }
+        }
+        /*
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (Voluntario voluntario : voluntarios) {
                 writer.write(voluntario.infoVoluntarios());
@@ -220,7 +246,7 @@ public class Main {
             }
         } catch (IOException e) {
             System.out.println("Erro ao salvar os dados: " + e.getMessage());
-        }
+        }*/
     }
 
     private static void carregarDados() {

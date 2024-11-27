@@ -1,0 +1,1 @@
+Nome: Natan, CPF: 172.255.877-65, Matrícula: 43, Email: natan.barreto@gel.inatel.br, Data de Nascimento: 17/12/2002, Curso: GEL, Sexo: Masculino, Endereço: Rua Cel. Francisco Palma, 231, Centro, Santa Rita do Sapucaí-MG, Horas Totais por Semana: 40, Funções: [Ministrar Aulas], Matérias: [Robótica]
