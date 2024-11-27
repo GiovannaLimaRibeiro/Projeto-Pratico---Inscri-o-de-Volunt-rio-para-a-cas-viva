@@ -1,6 +1,3 @@
-import java.io.*;
-import java.util.*;
-
 public abstract class AlunoInatel {
     private String nome;
     private String cpf;

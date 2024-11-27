@@ -75,7 +75,7 @@ public class Main {
             String sexo = scanner.nextLine();
             System.out.print("Endereço: ");
             String endereco = scanner.nextLine();
-            System.out.print("Número de Horas Registradas: ");
+            System.out.print("Número de Horas Totais por Semana: ");
             int numDeHorasRegistradas = scanner.nextInt();
             scanner.nextLine(); // Consumir quebra de linha
 
@@ -142,21 +142,35 @@ public class Main {
 
         for (Voluntario voluntario : voluntarios) {
             if (voluntario.getCpf().equals(cpf)) {
-                System.out.println("Escolha uma função para atribuir:");
-                System.out.println("1. Ministrar Aulas");
-                System.out.println("2. Atividades de Lixo Eletrônico");
+                System.out.println("Escolha uma opção:");
+                System.out.println("1. Atribuir Função");
+                System.out.println("2. Gerenciar Matérias");
                 int escolha = scanner.nextInt();
                 scanner.nextLine(); // Consumir quebra de linha
 
                 switch (escolha) {
                     case 1:
-                        voluntario.addFuncao("Ministrar Aulas");
-                        System.out.println("Função 'Ministrar Aulas' atribuída!");
+                        System.out.println("Escolha uma função para atribuir:");
+                        System.out.println("1. Ministrar Aulas");
+                        System.out.println("2. Atividades de Lixo Eletrônico");
+                        int funcaoEscolha = scanner.nextInt();
+                        scanner.nextLine(); // Consumir quebra de linha
+
+                        if (funcaoEscolha == 1) {
+                            voluntario.addFuncao("Ministrar Aulas");
+                            System.out.println("Função 'Ministrar Aulas' atribuída!");
+                        } else if (funcaoEscolha == 2) {
+                            voluntario.addFuncao("Atividades de Lixo Eletrônico");
+                            System.out.println("Função 'Atividades de Lixo Eletrônico' atribuída!");
+                        } else {
+                            System.out.println("Opção inválida.");
+                        }
                         break;
+
                     case 2:
-                        voluntario.addFuncao("Atividades de Lixo Eletrônico");
-                        System.out.println("Função 'Atividades de Lixo Eletrônico' atribuída!");
+                        gerenciarMaterias(scanner, voluntario);
                         break;
+
                     default:
                         System.out.println("Opção inválida.");
                 }
@@ -165,6 +179,37 @@ public class Main {
         }
         System.out.println("Voluntário não encontrado.");
     }
+
+    private static void gerenciarMaterias(Scanner scanner, Voluntario voluntario) {
+        System.out.println("Gerenciar Matérias:");
+        System.out.println("1. Adicionar Matéria");
+        System.out.println("2. Remover Matéria");
+        System.out.println("3. Listar Matérias");
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Consumir quebra de linha
+
+        switch (opcao) {
+            case 1:
+                System.out.print("Digite o nome da matéria a ser adicionada: ");
+                String novaMateria = scanner.nextLine();
+                voluntario.adicionarMateria(novaMateria);
+                break;
+            case 2:
+                System.out.print("Digite o nome da matéria a ser removida: ");
+                String materiaRemover = scanner.nextLine();
+                voluntario.removerMateria(materiaRemover);
+                break;
+            case 3:
+                System.out.println("Matérias atribuídas ao voluntário:");
+                for (String materia : voluntario.getMaterias()) {
+                    System.out.println("- " + materia);
+                }
+                break;
+            default:
+                System.out.println("Opção inválida.");
+        }
+    }
+
 
     private static void salvarDados() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
