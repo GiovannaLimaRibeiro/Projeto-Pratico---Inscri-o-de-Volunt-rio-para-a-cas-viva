@@ -146,11 +146,49 @@ public class Main {
         System.out.print("Digite o CPF do voluntário para remover: ");
         String cpf = scanner.nextLine();
 
-        voluntarios.removeIf(voluntario -> voluntario.getCpf().equals(cpf));
-        System.out.println("Voluntário removido com sucesso!");
+        // Remove o voluntário da lista
+        boolean removed = voluntarios.removeIf(voluntario -> voluntario.getCpf().equals(cpf));
+
+        if (removed) {
+            // Atualiza o arquivo excluindo a linha correspondente
+            atualizarArquivo(cpf);
+            System.out.println("Voluntário removido com sucesso!");
+        } else {
+            System.out.println("Voluntário não encontrado.");
+        }
     }
 
-    private static void atribuirFuncoes(Scanner scanner) {
+    private static void atualizarArquivo(String cpf) {
+        File arquivo = new File(FILE_NAME);
+        File arquivoTemp = new File("C:\\Users\\natan\\Documents\\GitHub\\Projeto-Pratico-Inscricao-de-voluntarios-para-a-casa-viva\\Inatel_casaviva\\src\\Temp.txt");  // Arquivo temporário para a reescrita
+
+        try (BufferedReader leitor = new BufferedReader(new FileReader(arquivo));
+             BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoTemp))) {
+
+            String linha;
+            while ((linha = leitor.readLine()) != null) {
+
+                if (!linha.contains(cpf)) {
+                    escritor.write(linha);
+                    escritor.newLine();
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao atualizar o arquivo: " + e.getMessage());
+        }
+
+        // Substitui o arquivo original pelo arquivo temporário
+        if (arquivo.delete()) {
+            if (!arquivoTemp.renameTo(arquivo)) {
+                System.out.println("Erro ao substituir o arquivo original.");
+            }
+        } else {
+            System.out.println("Erro ao deletar o arquivo original.");
+        }
+    }
+
+
+                private static void atribuirFuncoes(Scanner scanner) {
         System.out.print("Digite o CPF do voluntário para atribuir funções: ");
         String cpf = scanner.nextLine();
 
