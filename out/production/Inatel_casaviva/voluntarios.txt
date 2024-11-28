@@ -1,2 +1,4 @@
-Nome: João Silva, CPF: 123.456.789-10, Matrícula: 1054, Email: joao@inatel.br, Data de Nascimento: abacate, Curso: GEC, Sexo: M, Endereço: Rua A, 45, Centro, São Paulo-SP, Horas Totais por Semana: 10, Funções: [Ministrar Aulas], Matérias: [Programação I]
-Nome: Natan Barreto de Paula, CPF: 172.255.877-65, Matrícula: 43, Email: natan.barreto@gel.inatel.br, Data de Nascimento: 17/12/2002, Curso: GEL, Sexo: Masculino, Endereço: Rua. Cel Francisco Palma, 231, Centro, Santa Rita do Sapucaí-MG, Horas Totais por Semana: 40, Funções: [Ministrar Aulas], Matérias: [Robótica]
+Nome: João da Silva, CPF: 123.456.789-10, Matrícula: 456, Email: joao@inatel.br, Data de Nascimento: 15/12/2002, Curso: GEC, Sexo: M, Endereço: Rua A, Horas Totais por Semana: 40, Funções: [Ministrar Aulas], Matérias: [Robótica]
+Nome: Natan Barreto, CPF: 172.255.877-65, Matrícula: 43, Email: natan.b@inatel.br, Data de Nascimento: 17/12/2002, Curso: GEC, Sexo: M, Endereço: Rua Cel Francisco Palma, Horas Totais por Semana: 40, Funções: [Ministrar Aulas], Matérias: [Eletrônica]
+Nome: Giovanna de Lima, CPF: 137.979.686-55, Matrícula: 1997, Email: giovanna@inatel.br, Data de Nascimento: 19/10/2001, Curso: GEC, Sexo: F, Endereço: Rua Felipe Elias Kallas, Horas Totais por Semana: 20, Funções: [Ministrar Aulas], Matérias: [Soft Skills]
+

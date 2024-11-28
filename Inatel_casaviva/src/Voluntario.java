@@ -8,8 +8,15 @@ public class Voluntario extends AlunoInatel implements Funcoes {
     private List<String> funcoes = new ArrayList<>();
     private List<String> materias = new ArrayList<>();
 
-    public Voluntario(String nome, String cpf, int matricula, String email, String dataNascimento, String curso,
-                      String sexo, String endereco, int numDeHorasRegistradas) {
+    public Voluntario(String nome, String cpf, int matricula, String email, String dataNascimento, String curso, String sexo, String endereco, int numDeHorasRegistradas, List<String> funcoes, List<String> materias) {
+        super(nome, cpf, matricula, email, dataNascimento, curso);
+        this.sexo = sexo;
+        this.endereco = endereco;
+        this.numDeHorasRegistradas = numDeHorasRegistradas;
+        this.funcoes = funcoes;
+        this.materias = materias;
+    }
+    public Voluntario(String nome, String cpf, int matricula, String email, String dataNascimento, String curso, String sexo, String endereco, int numDeHorasRegistradas) {
         super(nome, cpf, matricula, email, dataNascimento, curso);
         this.sexo = sexo;
         this.endereco = endereco;
@@ -36,8 +43,8 @@ public class Voluntario extends AlunoInatel implements Funcoes {
 
     public String infoVoluntarios() {
         return infoAlunoInatel() + ", Sexo: " + sexo + ", Endereço: " + endereco +
-                ", Horas Totais por Semana: " + numDeHorasRegistradas + ", Funções: " + funcoes +
-                ", Matérias: " + materias;
+                ", Horas Totais por Semana: " + numDeHorasRegistradas + ", Funções: [" + String.join(";", funcoes) + "]" +
+                ", Matérias: [" + String.join(";", materias) + "]";
     }
 
     public void addFuncao(String funcao) {
