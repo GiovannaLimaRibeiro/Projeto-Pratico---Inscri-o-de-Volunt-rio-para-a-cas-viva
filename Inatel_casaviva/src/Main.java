@@ -30,7 +30,10 @@ public class Main {
                     salvarDados();
                     break;
                 case 2:
-                    pesquisarVoluntario(scanner);
+                    Scanner scanner2 = new Scanner(System.in);
+                    System.out.print("Digite o CPF do voluntário para pesquisar: ");
+                    String cpf = scanner.nextLine();
+                    pesquisarVoluntario(cpf);
                     salvarDados();
                     break;
                 case 3:
@@ -94,18 +97,26 @@ public class Main {
         }
     }
 
-    private static void pesquisarVoluntario(Scanner scanner) {
-        System.out.print("Digite o CPF do voluntário para pesquisar: ");
-        String cpf = scanner.nextLine();
+    private static void pesquisarVoluntario(String cpf) {
+        try (BufferedReader bufferEntrada = new BufferedReader(new FileReader(FILE_NAME))) {
+            String leitura;
+            boolean encontrado = false;
 
-        for (Voluntario voluntario : voluntarios) {
-            if (voluntario.getCpf().equals(cpf)) {
-                System.out.println("Voluntário encontrado:");
-                System.out.println(voluntario.infoVoluntarios());
-                return;
+            while ((leitura = bufferEntrada.readLine()) != null) {
+                if (leitura.contains("CPF: " + cpf)) {
+                    System.out.println("Voluntário encontrado:");
+                    System.out.println(leitura);
+                    encontrado = true;
+                    break;
+                }
             }
+
+            if (!encontrado) {
+                System.out.println("Voluntário não encontrado.");
+            }
+        } catch (IOException e) {
+            System.err.printf("Erro ao ler o arquivo: %s%n", e.getMessage());
         }
-        System.out.println("Voluntário não encontrado.");
     }
 
     private static void atualizarVoluntario(Scanner scanner) {
@@ -238,15 +249,6 @@ public class Main {
                 System.err.printf(String.valueOf(e));
             }
         }
-        /*
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            for (Voluntario voluntario : voluntarios) {
-                writer.write(voluntario.infoVoluntarios());
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar os dados: " + e.getMessage());
-        }*/
     }
 
     private static void carregarDados() {
