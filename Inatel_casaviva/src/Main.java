@@ -209,10 +209,10 @@ public class Main {
 
                         if (funcaoEscolha == 1) {
                             voluntario.addFuncao("Ministrar Aulas");
-                            System.out.println("Função 'Ministrar Aulas de Informatica' atribuída!");
+                            System.out.println("Função 'Ministrar Aulas' atribuída!");
                         } else if (funcaoEscolha == 2) {
                             voluntario.addFuncao("Atividades de Lixo Eletrônico");
-                            System.out.println("Função 'desmostar notebooks DELL' atribuída!");
+                            System.out.println("Função 'Atividades de Lixo Eletrônico' atribuída!");
                         } else {
                             System.out.println("Opção inválida.");
                         }
